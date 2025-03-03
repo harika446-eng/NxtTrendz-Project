@@ -1,0 +1,39 @@
+.filters-group-container {
+  margin-top: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .filters-group-container {
+    width: 30%;
+    max-width: 350px;
+    margin-top: 48px;
+    flex-shrink: 0;
+  }
+}
+
+.filter-group-name {
+  font-size: 20px;
+}
+
+.rating-img {
+  height: 20px;
+}
+
+.search-input {
+  height: 30px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.search-icon {
+  border-style: solid;
+  border-color: grey;
+  height: 30px;
+  width: 30px;
+  border-width: 1px;
+}
+
+.search-container {
+  display: flex;
+}
+/* Write your CSS here */

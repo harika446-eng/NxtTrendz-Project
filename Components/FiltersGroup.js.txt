@@ -1,0 +1,71 @@
+import {IoMdSearch} from 'react-icons/io'
+import './index.css'
+
+const FiltersGroup = props => {
+  const {searchValue, updateSearchValue} = props
+  const onBlurSearch = event => {
+    updateSearchValue(event.target.value)
+  }
+  const {
+    categoryOptions,
+    ratingsList,
+    updateRatingId,
+    updateCategoryId,
+    clearFilters,
+  } = props
+  const onClickRating = ratingId => {
+    console.log(ratingId)
+    updateRatingId(ratingId)
+  }
+  const onClickCategory = categoryId => {
+    updateCategoryId(categoryId)
+  }
+  const onClickClearFilters = () => {
+    clearFilters()
+  }
+  return (
+    <div className="filters-group-container">
+      <div className="search-container">
+        <input
+          id="search"
+          className="search-input"
+          type="search"
+          placeholder="Search"
+          value={searchValue}
+          onChange={onBlurSearch}
+        />
+        <label htmlFor="search">
+          <IoMdSearch className="search-icon" />
+        </label>
+      </div>
+
+      <h1 className="filter-group-name">Category</h1>
+      {categoryOptions.map(eachItem => (
+        <p
+          key={eachItem.categoryId}
+          onClick={() => onClickCategory(eachItem.categoryId)}
+        >
+          {eachItem.name}
+        </p>
+      ))}
+      <h1 className="filter-group-name">Rating</h1>
+      {ratingsList.map(eachItem => (
+        <>
+          <img
+            className="rating-img"
+            onClick={() => onClickRating(eachItem.ratingId)}
+            alt={`rating ${eachItem.ratingId}`}
+            key={eachItem.ratingId}
+            src={eachItem.imageUrl}
+          />
+          <br />
+        </>
+      ))}
+      <button type="button" onClick={onClickClearFilters}>
+        Clear Filters
+      </button>
+    </div>
+  )
+}
+
+export default FiltersGroup
